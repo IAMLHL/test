@@ -148,7 +148,7 @@ namespace TestProgram.Controllers
             }
             else
             {
-                return Content("<script>alert('错误');history.go(-1);</script>");
+                return Content("<script>alert('错误！');history.go(-1);</script>");
             }
         }
     }
