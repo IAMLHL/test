@@ -1,0 +1,33 @@
+﻿@using TestProgram.Models;
+@{
+    ViewBag.Title = "Main";
+
+    meandEntities ET = new meandEntities();
+    var m = ET.M_Message.ToList();
+}
+<form action="/Home/AddMain" method="post">
+    <menu>
+        <li>个人中心</li>
+    </menu>
+    @Html.TextBox("message")
+
+    <input type="submit" class="btn-primary" value="ADD"  />
+
+    <table>
+        <tr>
+            <th>消息</th>
+            <th>操作</th>
+        </tr>
+        @for (int i = 0; i < m.Count; i++)
+        {
+            <tr>
+                <td>
+                    @m[i].Content
+                </td>
+                <td>
+                    <a>删除</a>
+                </td>
+            </tr>
+        }
+    </table>
+</form>

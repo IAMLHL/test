@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<form action="/Home/AdminLogin" method="post">
+    <div id="login">
+        <p>
+            <label for="user_login">
+                Username or Email Address<br>
+                <input type="text" name="log" id="user_login" class="input">
+            </label>
+        </p>
+        <p>
+            <label for="user_pass">
+                Password<br>
+                <input type="password" name="pwd" id="user_pass" class="input" >
+            </label>
+        </p>
+        <p class="forgetmenot"><label for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever"> Remember Me</label></p>
+        <p class="submit">
+            <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary button-large" value="Log In">
+            <input type="hidden" name="redirect_to" value="https://www.xcode.me/wp-admin/">
+            <input type="hidden" name="testcookie" value="1">
+        </p>
+
+        <p id="nav">
+            <a href="https://www.xcode.me/wp-login.php?action=lostpassword">Lost your password?</a>
+        </p>
+    </div>
+</form>

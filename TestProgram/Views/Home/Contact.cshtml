@@ -1,0 +1,40 @@
+﻿@using TestProgram.Models;
+@{
+    ViewBag.Title = "Contact";
+    List<Product> list_p = new List<Product>();
+    for (int i = 0; i < 10; i++)
+    {
+        Product p = new Product();
+        p.Name = "Name" + i + i + i;
+        p.Number = "Number" + i;
+        list_p.Add(p);
+    }
+    var grid = new WebGrid(list_p, columnNames: new[] { "Name", "Number" }, rowsPerPage: 3,ajaxUpdateContainerId:"div1");
+}
+<style type="text/css">
+    .webGrid {
+        margin: 4px;
+        border-collapse: collapse;
+        width: 500px;
+        background-color: #B4CFC3;
+    }
+</style>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    <div id="div1">
+        @grid.GetHtml(tableStyle: "webGrid", columns: grid.Columns(grid.Column("Name", header: "名称"), grid.Column("Number", header: "数量")))
+        <input type="submit" value="啊啊啊" />
+    </div>
+    @RenderPage("Login.cshtml")
+</address>

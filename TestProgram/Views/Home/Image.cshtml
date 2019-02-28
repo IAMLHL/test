@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Image";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p>Use this area to provide additional information.</p>
+
+@*<script runat="server">
+        sub Page_Load
+        if Not Page.IsPostBack then
+           dim mycountries=New Hashtable
+           mycountries.Add("C","China")
+           mycountries.Add("S","Sweden")
+           mycountries.Add("F","France")
+           mycountries.Add("I","Italy")
+           rb.DataSource=mycountries
+           rb.DataValueField="Key"
+           rb.DataTextField="Value"
+           rb.DataBind()
+        end if
+        end sub
+
+        sub displayMessage(s as Object,e As EventArgs)
+        lbl1.text="Your favorite country is: " & rb.SelectedItem.Text
+        end sub
+    </script>*@
+
+@using TestProgram.Models;
+
+@{
+    List<tbt> list_p = new List<tbt>();
+    Random rd = new Random();
+    for (int i = 1; i < 5; i++)
+    {
+        list_p.Add(new tbt() { aaa = "列" + i, bbb = i * 10, ccc = i * 20, ddd = rd.Next(10,200) });
+    }
+    //    var myChart = new Chart(900, 400, ChartTheme.Blue)
+    //           .AddTitle("2017~2018城市人口统计")
+    //           .AddLegend("年份")
+    //           .SetXAxis("城市")
+    //          .SetYAxis("人口 【单位:万人】")
+    //          .AddSeries(chartType: "column", name: "2018年",
+    //          xValue: new List<string>() { "北京", "上海", "广州", "深圳", "重庆" },
+    //          yValues: new List<float>() { 1962.24f, 2301.91f, 1270.08f, 1035.79f, 2884.62f })
+    //          .AddSeries(chartType: "column", name: "2019年",
+    //          xValue: new List<string>() { "北京", "上海", "广州", "深圳", "重庆" },
+    //          yValues: new List<float>() { 1262.24f, 2001.91f, 1870.08f, 1535.79f, 2084.62f })
+    //.Write();
+
+    var dbdata = list_p;
+    var myChart = new Chart(900, 400, ChartTheme.Yellow)
+           .AddTitle("标题xxx")
+            .AddLegend("年份")
+           .SetXAxis("城市")
+          .SetYAxis("人口")
+.DataBindTable(dataSource: dbdata, xField: "aaa")
+.Write();
+
+    //    column：柱状图
+    //line / spline：折线图
+    //spline：曲线图
+    //bar：条形图
+    //pie：饼图
+    //area：区块图
+
+    //扇形图
+    //    var dbdata = list_p;
+    //    var myChart = new Chart(width: 600, height: 400)
+    //.AddTitle("Product Sales")
+    //.AddSeries(chartType: "pie",
+    //xValue: dbdata, xField: "aaa",
+    //yValues: dbdata, yFields: "ddd")
+    //.Write();
+
+}
+
